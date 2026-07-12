@@ -1,16 +1,15 @@
 from mfrc522 import MFRC522
-import utime
-
-reader = MFRC522(spi_id=0, sck=2, miso=4, mosi=3, cs=1, rst=0)
-
-print("Bring TAG closer..."+"\n")
-
+import time
+reader = MFRC522(sck=2,mosi=3,miso=4,rst=0,cs=1)
+reader.init()
+print("Reader Initialized"+"\n")
 while True:
-    reader.init()
-    (stat, tag_type) = reader.request(reader.REQIDL)
-    if stat == reader.OK:
-        (stat, uid) = reader.SelectTagSN()
-        if stat == reader.OK:
-            card = int.from_bytes(bytes(uid), "little", False)
-            print("CARD ID: " + str(card))
-    utime.sleep_ms(500)
+    stat,bits = reader.request(reader.REQIDL)
+    if stat==reader.OK: # checks if its picking up a card
+        stat,uid = reader.SelectTagSN()
+        if stat==reader.OK: # checks if it selected a tag correctly
+            uid_bytes = bytes(uid) #converts uid to bytes
+            card = int.from_bytes(uid_bytes,"little",False) #converts bytes in little Endian order, unassigned, to an integer
+            print(card)
+            time.sleep(2)
+            
