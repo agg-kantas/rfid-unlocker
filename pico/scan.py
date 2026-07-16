@@ -11,5 +11,5 @@ while True:
             uid_bytes = bytes(uid) #converts uid to bytes
             card = int.from_bytes(uid_bytes,"little",False) #converts bytes in little Endian order, unassigned, to an integer
             print(card)
-            time.sleep(2)
-            
+            time.sleep(1)
+
