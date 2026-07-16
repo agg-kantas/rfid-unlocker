@@ -3,14 +3,14 @@ import serial
 import time
 class Unlocker:
     def __init__(self):
-        self.card = "299630633" #configure this
-        self.port = serial.Serial("/dev/ttyACM0",1000000,timeout=1) #configure this
+        self.card = 299630633 #configure this according to the uid you want to be accepted
+        self.port = serial.Serial("/dev/ttyACM0",1000000) #configure this according to your microcontroller directory and its baudrate
     def compare(self):
-        time.sleep(1)
         print(f"Connected to {self.port.name}")
         while True:
-            line = self.port.readline()
-            line = line.decode().strip()
+            line = self.port.readline() #reads line from port
+            line = line.decode().strip() #leaves the pure string
+            line = int(line)
             if line == self.card:
                 self.acc = True
                 break
