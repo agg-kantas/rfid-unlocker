@@ -20,13 +20,14 @@ class Unlocker:
         self.port.close()
     def unlock(self):
         if self.acc == True:
-            print(1)
+            print("Card was recognized successfully!")
+            process = subprocess.Popen(["loginctl unlock-session 3"],shell=True) #configure this with your own user session ID
         else:
-            print(0)
+            print("Card was not recognized")
 if __name__ == "__main__": #checks if program is ran as file instead of being imported
+    proc = Unlocker()
     while True:
         proc = Unlocker()
         time.sleep(1)
         proc.compare()
         proc.unlock()
-
