@@ -34,7 +34,10 @@ class Unlocker:
 if __name__ == "__main__": #checks if program is ran as file instead of being imported
     proc = Unlocker()
     while True:
-        proc.compare()
-        time.sleep(1)
-        proc.unlock()
-    self.port.close()
+        try:
+            proc.compare()
+            time.sleep(1)
+            proc.unlock()
+        except KeyboardInterrupt:
+            print("\n"+"Program Closed")
+            break
