@@ -12,16 +12,17 @@ class Unlocker:
         while True:
             line = self.port.readline() #reads line from port
             line = line.decode().strip() #leaves the pure string
-            line = int(line)
             try:
+                line = int(line)
+            except ValueError:
+                print("Error! Microcontroller picked up malformed data!")
+            else:
                 if line == self.card:
                     self.acc = True
                     break
-            except ValueError:
-                    print("Error! Microcontroller picked up malformed data!")
-            else:
-                self.acc = False
-                break
+                else:
+                    self.acc = False
+                    break
     def unlock(self):
         if self.acc == True:
             print("Card was recognized successfully!")
