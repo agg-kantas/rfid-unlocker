@@ -7,8 +7,8 @@ class Unlocker:
         self.port = serial.Serial("/dev/ttyACM0",1000000) #configure this according to your microcontroller directory and its baudrate
         self.acc = None
         self.session = 3 #configure this with your own session ID
-    def compare(self):
         print(f"Connected to {self.port.name}")
+    def compare(self):
         while True:
             line = self.port.readline() #reads line from port
             line = line.decode().strip() #leaves the pure string
