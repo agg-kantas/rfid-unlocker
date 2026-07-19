@@ -1,0 +1,14 @@
+[Unit]
+Description=Python Daemon that unlocks loginctl sessions using this service and an RFID tag with a microcontroller
+After=network.target #shouldn't need a running network to start
+Wants=network.target
+
+[Service]
+Type=simple
+WorkingDirectory= /home/owner/Desktop/Projects/rfid-unlocker/daemon
+ExecStart=/usr/bin/python3 /home/owner/Desktop/Projects/rfid-unlocker/daemon/unlocker.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
