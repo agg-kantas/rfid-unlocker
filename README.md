@@ -74,7 +74,7 @@ Check daemon status using ```systemctl status rfid-unlocker.service```
 - Programming in MicroPython (library constraints)
 - Serial communication between a microcontroller and a host machine over USB
 ### Systems
-- Writing and enabling a systemd user service to run a script as a persistent background daemon
+- Writing and enabling a systemd service to run a script as a persistent background daemon
 
 
 ## Notes
