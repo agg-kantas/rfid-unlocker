@@ -64,7 +64,17 @@ sudo systemctl start rfid-unlocker.service
 
 Check daemon status using ```systemctl status rfid-unlocker.service```
 
-##What I learned
+## What I learned
+### Python
+- Object-oriented programming: structuring hardware I/O into a class with clear responsibilities
+- Understanding and using unfamiliar third party libraries by their interfaces and examples
+- Using the `subprocess` library to execute shell commands via python script
+### Embedded/Hardware
+- SPI communication between a microcontroller and a module (RC522)
+- Programming in MicroPython (library constraints)
+- Serial communication between a microcontroller and a host machine over USB
+### Systems
+- Writing and enabling a systemd user service to run a script as a persistent background daemon
 
 
 ## Notes
