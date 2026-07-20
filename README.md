@@ -29,3 +29,11 @@ Taps an RFID card near an RC522 reader (connected to a Raspberry Pi Pico 2W) to 
 |SDA/CS    |GP1     |
 
 >Do not power the RC522 module with 5V, otherwise you risk damaging it
+
+## Installation
+
+### 1. Pico side (MicroPython)
+Copy **pico/mfrc522.py** and **pico/main.py** onto the Pico (through an IDE like Thonny), and run the **main.py** script so it runs automatically on boot
+*Make sure your IDE is closed before you use the daemon because it can throw a multiple ports open error*
+
+### 2. Host side (Debian/Linux)
