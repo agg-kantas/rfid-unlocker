@@ -32,8 +32,19 @@ Taps an RFID card near an RC522 reader (connected to a Raspberry Pi Pico 2W) to 
 
 ## Installation
 
-### 1. Pico side (MicroPython)
-Copy **pico/mfrc522.py** and **pico/main.py** onto the Pico (through an IDE like Thonny), and run the **main.py** script so it runs automatically on boot
+### Pico side (MicroPython)
+Copy `pico/mfrc522.py` and `pico/main.py` onto the Pico (through an IDE like Thonny), and run the `main.py` script so it runs automatically on boot
 *Make sure your IDE is closed before you use the daemon because it can throw a multiple ports open error*
 
-### 2. Host side (Debian/Linux)
+### Host side (Debian/Linux)
+```bash
+git clone https://github.com/agg-kantas/rfid-unlocker.git
+cd rfid-unlocker/daemon
+pip install pyserial --break-system-packages
+```
+**(On SOME Linux Distros pyserial might already be installed as an package, it would be wise to check before installing it with pip)**
+
+Edit `unlocker.py` and set:
+- `self.card` > the UID of your authorized tag (check it by what the Pico script prints out on scan)
+- `self.port` > your serial device path (usually /dev/ttyACM0) and baudrate of your reader module (leave it as is if you're using RC522)
+- `self.session` > your loginctl session ID (use loginctl list-sessions to check)
