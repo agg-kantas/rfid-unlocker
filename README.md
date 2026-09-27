@@ -45,6 +45,7 @@ Copy `pico/mfrc522.py` and `pico/main.py` onto the Pico (through an IDE like Tho
 ```bash
 git clone https://github.com/agg-kantas/rfid-unlocker.git
 cd rfid-unlocker/daemon
+chmod +x unlocker.py
 pip install pyserial --break-system-packages
 ```
 **(On SOME Linux Distros pyserial might already be installed as a package, it would be wise to check before installing it with pip)**
